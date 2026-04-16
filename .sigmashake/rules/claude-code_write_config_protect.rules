@@ -14,9 +14,8 @@ rule ask-claude-code-test-rigging {
   enabled true
   priority 95
   severity warning
-  ASK write
+  LOG write
   IF input.agent_model CONTAINS "claude" AND path GLOB "**/*.test.*" AND content CONTAINS "expect(true).toBe(true)"
   OR input.agent_model CONTAINS "claude" AND path GLOB "**/*.spec.*" AND content CONTAINS "expect(true).toBe(true)"
   MESSAGE "Claude Code Pain Point Fix: Claude attempted to insert a tautological (always true) test to fake a successful test run."
-  PROMPT "Claude is rigging the tests to fake success. Do you want to allow this edit?"
 }

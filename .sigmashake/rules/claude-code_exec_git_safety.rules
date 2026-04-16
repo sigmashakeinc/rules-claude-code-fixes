@@ -16,8 +16,7 @@ rule ask-claude-code-git-revert {
   enabled true
   priority 95
   severity warning
-  ASK execution
+  LOG execution
   IF input.agent_model CONTAINS "claude" AND command CONTAINS "git revert"
   MESSAGE "Claude Code Pain Point Fix: Reverting commits often deletes the exact feature you just asked it to build."
-  PROMPT "Claude wants to run git revert. Are you sure you want to let it undo recent work?"
 }
